@@ -1,0 +1,48 @@
+﻿@model List<Person>
+
+@{
+    int ageSum = 0;
+    foreach (var person in Model)
+    {
+        ageSum += person.Age;
+    }
+}
+
+        
+
+<table class="table table-danger">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Age</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach(Person person in Model )
+        {
+            <tr>
+                <th scope="row">@person.Id</th>
+                <td>@person.Name</td>
+                <td>@person.Surname</td>
+                <td>@person.Email</td>
+                <td>@person.Age</td>
+                <td><a asp-controller="Person"
+                    a asp-action="GetById"
+
+                    asp-route-id="@person.Id"
+                    >Kişi Detayına Git</a></td>
+            </tr> 
+        }
+
+      
+        </tr>
+    </tbody>
+</table>
+
+<div class="alert alert-primary" role="alert">
+   kişilerin yaşları toplamı: @ageSum
+</div>
